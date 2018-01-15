@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/Images">
+        <file>Resources/toolbar_connect.png</file>
+        <file>Resources/toolbar_about.png</file>
+        <file>Resources/satDisabled.png</file>
+        <file>Resources/satEnabled.png</file>
+        <file>Resources/icon.png</file>
+    </qresource>
+</RCC>
