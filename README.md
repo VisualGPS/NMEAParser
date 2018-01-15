@@ -1,7 +1,7 @@
 # NMEA Parser Class Library
 Monte Variakojis \@VisualGPS
 
-Todo: write intro
+The NMEA 0813 standard for interfacing marine electronics devices specifies the NMEA data sentence structure as well as general definitions of approved sentences. However, the specification does not cover implementation and design. This source here describes parsing the packet and a handful of individual NMEA sentences.
 
 ## Features
 
@@ -37,6 +37,8 @@ Todo: write intro
        c:\Source\NMEAParser\NMEAParserBuild>cmake ../Software
 	   [Run VisualStudio and build as normal]
 	```
+
+- Qt project VisualGPSqt -- Use Qt creator to load and compile the project. For Windows, the project assumed the MinGW version of Qt.
 
 ## Usage
 
