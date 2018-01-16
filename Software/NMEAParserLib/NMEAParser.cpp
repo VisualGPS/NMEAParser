@@ -53,6 +53,9 @@ void CNMEAParser::ResetData(void)
 	m_BDGSV.ResetData();
 	m_BDGSA.ResetData();
 	m_GPRMC.ResetData();
+	m_GAGGA.ResetData();
+	m_GAGSA.ResetData();
+	m_GARMC.ResetData();
 
 	//
 	// Unlock access to data
@@ -148,6 +151,30 @@ CNMEAParserData::ERROR_E CNMEAParser::GetBDGSA(CNMEAParserData::GSA_DATA_T & sen
 	return CNMEAParserData::ERROR_OK;
 }
 
+CNMEAParserData::ERROR_E CNMEAParser::GetGAGGA(CNMEAParserData::GGA_DATA_T & sentenseData)
+{
+	DataAccessSemaphoreLock();
+	sentenseData = m_GAGGA.GetSentenceData();
+	DataAccessSemaphoreUnlock();
+	return CNMEAParserData::ERROR_OK;
+}
+
+CNMEAParserData::ERROR_E CNMEAParser::GetGAGSA(CNMEAParserData::GSA_DATA_T & sentenseData)
+{
+	DataAccessSemaphoreLock();
+	sentenseData = m_GAGSA.GetSentenceData();
+	DataAccessSemaphoreUnlock();
+	return CNMEAParserData::ERROR_OK;
+}
+
+CNMEAParserData::ERROR_E CNMEAParser::GetGARMC(CNMEAParserData::RMC_DATA_T & sentenseData)
+{
+	DataAccessSemaphoreLock();
+	sentenseData = m_GARMC.GetSentenceData();
+	DataAccessSemaphoreUnlock();
+	return CNMEAParserData::ERROR_OK;
+}
+
 CNMEAParserData::ERROR_E CNMEAParser::ProcessRxCommand(char * pCmd, char * pData)
 {
 
@@ -186,7 +213,22 @@ CNMEAParserData::ERROR_E CNMEAParser::ProcessRxCommand(char * pCmd, char * pData
 		m_GPRMC.ProcessSentence(pCmd, pData);
 		DataAccessSemaphoreUnlock();
 	}
-    else if (strcmp(pCmd, "GNGSA") == 0) {
+	else if (strcmp(pCmd, "GAGGA") == 0) {
+		DataAccessSemaphoreLock();
+		m_GAGGA.ProcessSentence(pCmd, pData);
+		DataAccessSemaphoreUnlock();
+	}
+	else if (strcmp(pCmd, "GAGSA") == 0) {
+		DataAccessSemaphoreLock();
+		m_GAGSA.ProcessSentence(pCmd, pData);
+		DataAccessSemaphoreUnlock();
+	}
+	else if (strcmp(pCmd, "GARMC") == 0) {
+		DataAccessSemaphoreLock();
+		m_GARMC.ProcessSentence(pCmd, pData);
+		DataAccessSemaphoreUnlock();
+	}
+	else if (strcmp(pCmd, "GNGSA") == 0) {
         DataAccessSemaphoreLock();
         m_GNGSA.ProcessSentence(pCmd, pData);
         DataAccessSemaphoreUnlock();

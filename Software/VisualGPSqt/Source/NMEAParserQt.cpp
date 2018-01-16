@@ -70,7 +70,8 @@ CNMEAParserData::ERROR_E CNMEAParserQt::ProcessRxCommand(char *pCmd, char *pData
 
     qDebug() << "CNMEAParserQt::ProcessRxCommand - Command:" << pCmd << "Data:" << pData;
 
-    if(strstr(pCmd, "GPGGA") != NULL) {
+    // Update position anytime we get
+    if(strstr(pCmd, "GGA") != NULL) {
         emit NewPositionUpdateGPS();
     }
 

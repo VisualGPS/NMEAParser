@@ -48,6 +48,10 @@ private:
 	CNMEASentenceGSA	m_GPGSA;												///< GPGSA GNSS DOP and active satellites
 	CNMEASentenceRMC	m_GPRMC;												///< GPRMC Recommended minimum data for GPS
 
+	CNMEASentenceGGA	m_GAGGA;												///< GAGGA Specific sentence data
+	CNMEASentenceGSA	m_GAGSA;												///< GAGSA GNSS DOP and active satellites
+	CNMEASentenceRMC	m_GARMC;												///< GARMC Recommended minimum data for GPS
+
     CNMEASentenceGSA	m_GNGSA;												///< GNGSA GNSS DOP and active satellites (usually GPS and GLONASS but can be GLONASS only)
 
 	CNMEASentenceGSV	m_GLGSV;												///< GLGSV Satellite message (GLONASS)
@@ -144,6 +148,27 @@ public:
 	/// \return Returns ERROR_OK if successful.
 	///
 	CNMEAParserData::ERROR_E GetBDGSA(CNMEAParserData::GSA_DATA_T & sentenseData);
+
+	///
+	/// \brief Places a copy of the GAGGA data into sentenseData
+	/// \param sentenseData reference to a CNMEASentenceGGA object to place the data into.
+	/// \return Returns ERROR_OK if successful.
+	///
+	CNMEAParserData::ERROR_E GetGAGGA(CNMEAParserData::GGA_DATA_T & sentenseData);
+
+	///
+	/// \brief Places a copy of the GAGSA data into sentenseData
+	/// \param sentenseData reference to a CNMEASentenceGSA object to place the data into.
+	/// \return Returns ERROR_OK if successful.
+	///
+	CNMEAParserData::ERROR_E GetGAGSA(CNMEAParserData::GSA_DATA_T & sentenseData);
+
+	///
+	/// \brief Places a copy of the GARMC data into sentenseData
+	/// \param sentenseData reference to a CNMEASentenceGSA object to place the data into.
+	/// \return Returns ERROR_OK if successful.
+	///
+	CNMEAParserData::ERROR_E GetGARMC(CNMEAParserData::RMC_DATA_T & sentenseData);
 
 protected:
 	///
