@@ -3,6 +3,9 @@ Monte Variakojis \@VisualGPS
 
 The NMEA 0813 standard for interfacing marine electronics devices specifies the NMEA data sentence structure as well as general definitions of approved sentences. However, the specification does not cover implementation and design. This source here describes parsing the packet and a handful of individual NMEA sentences.
 
+## Documentation
+https://visualgps.github.io/NMEAParser/
+
 ## Features
 
   - No outside library dependencies.
