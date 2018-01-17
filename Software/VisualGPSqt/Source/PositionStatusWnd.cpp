@@ -72,6 +72,9 @@ void CPositionStatusWnd::paintEvent(QPaintEvent */*event*/){
 
     CNMEAParserData::RMC_DATA_T rmcData;
     m_pNMEAParser->GetGPRMC(rmcData);
+    if(rmcData.m_dLatitude == 0.0 && rmcData.m_dLongitude == 0.0 && rmcData.m_dLatitude == 0.0) {
+        m_pNMEAParser->GetGNRMC(rmcData);
+    }
 
     QString str =
             "Latitude:  \n"

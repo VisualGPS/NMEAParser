@@ -54,6 +54,7 @@ private:
 
 	CNMEASentenceGGA	m_GNGGA;												///< GAGGA Specific sentence data
 	CNMEASentenceGSA	m_GNGSA;												///< GNGSA GNSS DOP and active satellites (usually GPS and GLONASS but can be GLONASS only)
+	CNMEASentenceRMC	m_GNRMC;												///< GNRMC Recommended minimum data for GPS
 
 	CNMEASentenceGSV	m_GLGSV;												///< GLGSV Satellite message (GLONASS)
     CNMEASentenceGSA	m_GLGSA;												///< GLGSA GNSS DOP and active satellites
@@ -108,7 +109,14 @@ public:
 	///
 	CNMEAParserData::ERROR_E GetGPRMC(CNMEAParserData::RMC_DATA_T & sentenseData);
 
-    ///
+	///
+	/// \brief Places a copy of the GNRMC data into sentenseData
+	/// \param sentenseData reference to a CNMEASentenceGSA object to place the data into.
+	/// \return Returns ERROR_OK if successful.
+	///
+	CNMEAParserData::ERROR_E GetGNRMC(CNMEAParserData::RMC_DATA_T & sentenseData);
+
+	///
     /// \brief Places a copy of the GNGSA data into sentenseData
     /// \param sentenseData reference to a CNMEASentenceGSA object to place the data into.
     /// \return Returns ERROR_OK if successful.
