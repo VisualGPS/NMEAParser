@@ -71,6 +71,11 @@ public:
 	///
 	virtual void ResetData(void) = 0;
 
+	///
+	/// \brief Returns the receive count for this sentence
+	/// \return unsigned int - receive count
+	///
+	unsigned int GetRxCount(void) {	return m_uRxCount;	}
 protected:
 	///
 	/// \brief

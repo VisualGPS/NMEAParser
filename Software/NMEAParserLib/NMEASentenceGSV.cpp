@@ -103,12 +103,14 @@ CNMEAParserData::ERROR_E CNMEASentenceGSV::ProcessSentence(char * pCmd, char * p
 		}
 	}
 
+	m_uRxCount++;
 
 	return CNMEAParserData::ERROR_OK;
 }
 
 void CNMEASentenceGSV::ResetData(void)
 {
+	m_uRxCount = 0;
 	memset(&m_SentenceData.SatInfo[0], 0, sizeof(m_SentenceData.SatInfo));
 	m_SentenceData.nSatsInView = 0;
 	m_SentenceData.nSentenceNumber = 0;

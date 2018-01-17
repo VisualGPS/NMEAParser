@@ -88,11 +88,15 @@ CNMEAParserData::ERROR_E CNMEASentenceGSA::ProcessSentence(char * pCmd, char * p
 	else {
 		m_SentenceData.dVDOP = 0.0;
 	}
+
+	m_uRxCount++;
+
 	return CNMEAParserData::ERROR_OK;
 }
 
 void CNMEASentenceGSA::ResetData(void)
 {
+	m_uRxCount = 0;
 	m_SentenceData.dHDOP = 0.0;
 	m_SentenceData.dPDOP = 0.0;
 	m_SentenceData.dVDOP = 0.0;

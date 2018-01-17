@@ -164,6 +164,7 @@ CNMEAParserData::ERROR_E CNMEASentenceGGA::ProcessSentence(char * pCmd, char * p
 
 void CNMEASentenceGGA::ResetData(void)
 {
+	m_uRxCount = 0;
 	m_SentenceData.m_dAltitudeMSL = 0.0;
 	m_SentenceData.m_dDifferentialAge = 0.0;
 	m_SentenceData.m_dGeoidalSep = 0.0;

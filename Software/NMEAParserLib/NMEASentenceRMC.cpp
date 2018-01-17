@@ -151,6 +151,7 @@ CNMEAParserData::ERROR_E CNMEASentenceRMC::ProcessSentence(char *pCmd, char *pDa
 }
 
 void CNMEASentenceRMC::ResetData(void) {
+	m_uRxCount = 0;
 	m_SentenceData.m_dAltitudeMSL = 0.0;
 	m_SentenceData.m_dLatitude = 0.0;
 	m_SentenceData.m_dLongitude = 0.0;
