@@ -61,6 +61,14 @@ void CPositionStatusWnd::paintEvent(QPaintEvent */*event*/){
     //
     CNMEAParserData::GGA_DATA_T ggaData;
     m_pNMEAParser->GetGPGGA(ggaData);
+    // If no position information in the GPGGA sentence, then try the GNGGA..
+    if(ggaData.m_dLatitude == 0.0 && ggaData.m_dLongitude == 0.0 && ggaData.m_dLatitude == 0.0) {
+        m_pNMEAParser->GetGNGGA(ggaData);
+    }
+    // Again, no information, try Galileo
+    else if(ggaData.m_dLatitude == 0.0 && ggaData.m_dLongitude == 0.0 && ggaData.m_dLatitude == 0.0) {
+        m_pNMEAParser->GetGAGGA(ggaData);
+    }
 
     CNMEAParserData::RMC_DATA_T rmcData;
     m_pNMEAParser->GetGPRMC(rmcData);

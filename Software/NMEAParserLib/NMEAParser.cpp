@@ -46,6 +46,7 @@ void CNMEAParser::ResetData(void)
 	m_GPGSV.ResetData();
 	m_GPGSA.ResetData();
     m_GNGSA.ResetData();
+	m_GNGGA.ResetData();
 	m_GLGSV.ResetData();
 	m_GLGSA.ResetData();
 	m_QZGSV.ResetData();
@@ -67,6 +68,14 @@ CNMEAParserData::ERROR_E CNMEAParser::GetGPGGA(CNMEAParserData::GGA_DATA_T & sen
 {
 	DataAccessSemaphoreLock();
 	sentenseData = m_GPGGA.GetSentenceData();
+	DataAccessSemaphoreUnlock();
+	return CNMEAParserData::ERROR_OK;
+}
+
+CNMEAParserData::ERROR_E CNMEAParser::GetGNGGA(CNMEAParserData::GGA_DATA_T & sentenseData)
+{
+	DataAccessSemaphoreLock();
+	sentenseData = m_GNGGA.GetSentenceData();
 	DataAccessSemaphoreUnlock();
 	return CNMEAParserData::ERROR_OK;
 }
@@ -196,6 +205,11 @@ CNMEAParserData::ERROR_E CNMEAParser::ProcessRxCommand(char * pCmd, char * pData
 	if (strcmp(pCmd, "GPGGA") == 0) {
 		DataAccessSemaphoreLock();
 		m_GPGGA.ProcessSentence(pCmd, pData);
+		DataAccessSemaphoreUnlock();
+	}
+	else if (strcmp(pCmd, "GNGGA") == 0) {
+		DataAccessSemaphoreLock();
+		m_GNGGA.ProcessSentence(pCmd, pData);
 		DataAccessSemaphoreUnlock();
 	}
 	else if (strcmp(pCmd, "GPGSV") == 0) {

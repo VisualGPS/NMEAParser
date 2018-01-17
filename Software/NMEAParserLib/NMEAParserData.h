@@ -204,7 +204,7 @@ namespace CNMEAParserData {
 	typedef struct _GSA_DATA_T {
 		CNMEAParserData::ACTIVE_SAT_AUTO_MODE_E	nAutoMode;										///< Auto/manual mode
 		CNMEAParserData::ACTIVE_SAT_MODE_E		nMode;											///< Fix, 2D/3D mode
-		int										pnPRN[CNMEAParserData::c_nMaxGSASats];			///< Tracked satellites
+		int										pnPRN[CNMEAParserData::c_nMaxConstellation];	///< Tracked satellites
 		double									dPDOP;											///< PDOP
 		double									dHDOP;											///< HDOP
 		double									dVDOP;											///< VDOP
