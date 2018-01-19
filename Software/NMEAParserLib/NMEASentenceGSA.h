@@ -37,6 +37,8 @@ class CNMEASentenceGSA : public CNMEASentenceBase
 {
 private:
 	CNMEAParserData::GSA_DATA_T		m_SentenceData;								///< Sentence specific data
+	unsigned int					m_nOldGGACount;								///< Used to determine if we are getting more than one GSA sentence per position
+	int								m_nIndexCount;								///< Index into the satellite database
 
 public:
 	CNMEASentenceGSA();
@@ -61,6 +63,11 @@ public:
 	///
 	/// \brief Returns the NMEA sentence data structure
 	///
-	CNMEAParserData::GSA_DATA_T GetSentenceData(void) { return m_SentenceData; }
+	CNMEAParserData::GSA_DATA_T GetSentenceData(void) {	return m_SentenceData; 	}
+
+	///
+	/// \brief Sets the GGA receive count member variable
+	/// \param uCount Count value to set to
+	void SetGGARxCount(unsigned int uCount) { m_SentenceData.uGGACount = uCount; m_nIndexCount = 0;	}
 };
 

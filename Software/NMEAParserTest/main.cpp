@@ -119,6 +119,19 @@ void Test(void) {
 			"$GLGSV,3,2,09,84,22,072,,76,19,272,29,85,16,127,30,66,14,331,28*62" \
 			"$GLGSV,3,3,09,83,04,022,*53" \
 			"$GPRMC,033430.000,A,3351.8548,N,11744.4380,W,0.00,173.73,051217,,*1A";
+	const char * szDoubleGSATest = \
+		"$GNGGA,052105.00,3351.85350,N,11744.43680,W,1,12,0.73,154.7,M,-32.6,M,,*78" \
+		"$GNGSA,A,3,19,28,13,15,17,24,06,02,,,,,1.34,0.73,1.12*1C" \
+		"$GNGSA,A,3,73,74,75,83,84,85,,,,,,,1.34,0.73,1.12*13" \
+		"$GPGSV,4,1,13,01,02,033,10,02,24,188,26,06,47,157,34,12,11,294,18*79" \
+		"$GPGSV,4,2,13,13,21,220,23,15,16,253,29,17,56,031,32,19,76,351,29*72" \
+		"$GPGSV,4,3,13,24,35,311,28,28,30,082,31,30,09,147,10,48,47,206,*76" \
+		"$GPGSV,4,4,13,51,49,162,27*42" \
+		"$GLGSV,2,1,06,73,37,123,25,74,71,022,21,75,24,327,28,83,14,031,22*65" \
+		"$GLGSV,2,2,06,84,70,020,22,85,49,220,24*6C" \
+		"$GNGLL,3351.85350,N,11744.43680,W,052105.00,A,A*67" \
+		"$GNRMC,052106.00,A,3351.85350,N,11744.43681,W,0.020,,190118,,,A*7E" \
+		"$GNVTG,,T,,M,0.020,N,0.038,K,A*34";
 
 
 	// Test Individual sentences
@@ -128,6 +141,10 @@ void Test(void) {
 
 	// Test GLONASS
 	NMEAParser.ProcessNMEABuffer((char *)szGLONASSSample, (int)strlen(szGLONASSSample));
+
+	// Double GSA test
+	NMEAParser.ProcessNMEABuffer((char *)szDoubleGSATest, (int)strlen(szDoubleGSATest));
+
 
 	// Test partial sentences
 	NMEAParser.ProcessNMEABuffer((char *)szPartial1, (int)strlen(szPartial1)); // Should see no output

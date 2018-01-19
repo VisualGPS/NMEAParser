@@ -56,14 +56,17 @@ CNMEAParserData::ERROR_E CNMEASentenceGSA::ProcessSentence(char * pCmd, char * p
 	}
 
 	// Grab the satellite data
+	int nIndexCount = 0;
 	for (int i = 0; i < CNMEAParserData::c_nMaxGSASats; i++) {
 		if (GetField(pData, szField, 2 + i, c_nMaxField) == CNMEAParserData::ERROR_OK) {
-			m_SentenceData.pnPRN[i] = atoi(szField);
+			m_SentenceData.pnPRN[i + m_nIndexCount] = atoi(szField);
+			nIndexCount++;
 		}
 		else {
-			m_SentenceData.pnPRN[i] = CNMEAParserData::c_nInvlidPRN;
+			m_SentenceData.pnPRN[i + m_nIndexCount] = CNMEAParserData::c_nInvlidPRN;
 		}
 	}
+	m_nIndexCount = nIndexCount;
 
 	// PDOP
 	if (GetField(pData, szField, 14, c_nMaxField) == CNMEAParserData::ERROR_OK) {
@@ -100,7 +103,11 @@ void CNMEASentenceGSA::ResetData(void)
 	m_SentenceData.dHDOP = 0.0;
 	m_SentenceData.dPDOP = 0.0;
 	m_SentenceData.dVDOP = 0.0;
+	m_SentenceData.uGGACount = 0;
 	m_SentenceData.nAutoMode = CNMEAParserData::ASAM_MANUAL;
 	m_SentenceData.nMode = CNMEAParserData::ASM_FIX_NOT_AVAILABLE;
     memset(&m_SentenceData.pnPRN[0], 0, sizeof(m_SentenceData.pnPRN));
+
+	m_nOldGGACount = 0;
+	m_nIndexCount = 0;
 }

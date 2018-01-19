@@ -76,7 +76,7 @@ void CSignalQuality::ConsolidateSatData(std::map <int, SAT_INFO_T>&mapSatData) {
     }
 
     // GLONASS
-    for(int i = 0; i < CNMEAParserData::c_nMaxGSASats; i++) {
+    for(int i = 0; i < CNMEAParserData::c_nMaxConstellation; i++) {
         if(glgsaData.pnPRN[i] != CNMEAParserData::c_nInvlidPRN) {
             memset(&satInfo, 0, sizeof(satInfo));
             satInfo.nPRN = glgsaData.pnPRN[i];
@@ -86,7 +86,7 @@ void CSignalQuality::ConsolidateSatData(std::map <int, SAT_INFO_T>&mapSatData) {
         }
     }
     // GN
-    for(int i = 0; i < CNMEAParserData::c_nMaxGSASats; i++) {
+    for(int i = 0; i < CNMEAParserData::c_nMaxConstellation; i++) {
         if(gngsaData.pnPRN[i] != CNMEAParserData::c_nInvlidPRN) {
             memset(&satInfo, 0, sizeof(satInfo));
             satInfo.nPRN = gngsaData.pnPRN[i];

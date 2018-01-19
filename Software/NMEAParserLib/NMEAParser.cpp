@@ -214,11 +214,13 @@ CNMEAParserData::ERROR_E CNMEAParser::ProcessRxCommand(char * pCmd, char * pData
 	if (strcmp(pCmd, "GPGGA") == 0) {
 		DataAccessSemaphoreLock();
 		m_GPGGA.ProcessSentence(pCmd, pData);
+		m_GPGSA.SetGGARxCount(m_GPGGA.GetRxCount());
 		DataAccessSemaphoreUnlock();
 	}
 	else if (strcmp(pCmd, "GNGGA") == 0) {
 		DataAccessSemaphoreLock();
 		m_GNGGA.ProcessSentence(pCmd, pData);
+		m_GNGSA.SetGGARxCount(m_GNGGA.GetRxCount());
 		DataAccessSemaphoreUnlock();
 	}
 	else if (strcmp(pCmd, "GPGSV") == 0) {
@@ -244,6 +246,7 @@ CNMEAParserData::ERROR_E CNMEAParser::ProcessRxCommand(char * pCmd, char * pData
 	else if (strcmp(pCmd, "GAGGA") == 0) {
 		DataAccessSemaphoreLock();
 		m_GAGGA.ProcessSentence(pCmd, pData);
+		m_GAGSA.SetGGARxCount(m_GAGGA.GetRxCount());
 		DataAccessSemaphoreUnlock();
 	}
 	else if (strcmp(pCmd, "GAGSA") == 0) {

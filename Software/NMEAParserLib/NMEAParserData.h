@@ -208,6 +208,7 @@ namespace CNMEAParserData {
 		double									dPDOP;											///< PDOP
 		double									dHDOP;											///< HDOP
 		double									dVDOP;											///< VDOP
+		unsigned int							uGGACount;										///< GGA count - this is used to determine if we get more than one GSA packet per position update. If we do, then the receiver has more satellite data to share.
 	} GSA_DATA_T;																				///< GNSS DOP and active satellites
 
 	///
