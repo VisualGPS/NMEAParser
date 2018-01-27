@@ -8,11 +8,12 @@ https://visualgps.github.io/NMEAParser/
 
 ## Features
 
+  - Multi-platform - Tested on Linux, Windows and MacOS
   - No outside library dependencies.
   - OS independent (no OS specific calls)
   - Abstract software synchronization. You can redefine the data lock virtual method to support your OS
     specific semaphore or mutex functions.
-  - NMEA sentence notification. Redefine method to get notified that a new NMEA sentence was
+  - NMEA sentence notification. Redefine methods to get notified that a new NMEA sentence was
     processed.
 
 ## Required and Optional Tools
