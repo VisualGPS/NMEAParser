@@ -1,7 +1,9 @@
 # NMEA Parser Class Library
 Monte Variakojis \@VisualGPS
 
-The NMEA 0813 standard for interfacing marine electronics devices specifies the NMEA data sentence structure as well as general definitions of approved sentences. However, the specification does not cover implementation and design. This source here describes parsing the packet and a handful of individual NMEA sentences.
+The NMEA 0813 standard for interfacing marine electronics devices specifies the NMEA data sentence structure as well as general definitions of approved sentences. However, the specification does not cover implementation and design. This source here describes parsing the packet and a handful of individual NMEA sentences. Another challenge is multimode GPS receivers.
+
+The NMEA standard does not specify the use when a vendor uses a receiver that can handle multiple constellations. The NMEAParser does it's best to deal with this.
 
 ## Documentation
 https://visualgps.github.io/NMEAParser/
