@@ -17,7 +17,7 @@ https://visualgps.github.io/NMEAParser/
     specific semaphore or mutex functions.
   - NMEA sentence notification. Redefine methods to get notified that a new NMEA sentence was
     processed.
-  - Bonus Qt project included to show the NMEAParser in action. Supports Windows, Linux and Mac OS
+  - Bonus Qt project ~~included~~ to show the NMEAParser in action. Supports Windows, Linux and Mac OS. **NOTE: This project has been moved into its own repo located at:** https://github.com/VisualGPS/VisualGPSqt
     ![Qt Project making use of the NMEAParser.](./img/ss.png)
 
 ## Required and Optional Tools
