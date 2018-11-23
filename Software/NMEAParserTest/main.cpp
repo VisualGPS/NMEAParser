@@ -132,6 +132,9 @@ void Test(void) {
 		"$GNGLL,3351.85350,N,11744.43680,W,052105.00,A,A*67" \
 		"$GNRMC,052106.00,A,3351.85350,N,11744.43681,W,0.020,,190118,,,A*7E" \
 		"$GNVTG,,T,,M,0.020,N,0.038,K,A*34";
+	const char * szGalileoTest = \
+		"$GAGSV,2,1,08,02,21,256,41,03,40,275,44,05,28,339,39,08,14,224,42,0*7E" \
+		"$GAGSV,2,2,08,11,36,052,37,12,28,115,34,24,39,122,46,25,59,203,44,0*74";
 
 
 	// Test Individual sentences
@@ -158,6 +161,9 @@ void Test(void) {
 
 	// Test GGA bad checksum
 	NMEAParser.ProcessNMEABuffer((char *)szGGASampleBadCS, (int)strlen(szGGASampleBadCS));
+
+	// Galileo test
+	NMEAParser.ProcessNMEABuffer((char *)szGalileoTest, (int)strlen(szGalileoTest));
 
 }
 

@@ -43,25 +43,32 @@ class CNMEAParser : public CNMEAParserPacket {
 
 private:
 
+	// GPS
 	CNMEASentenceGGA	m_GPGGA;												///< GPGGA Specific sentence data
 	CNMEASentenceGSV	m_GPGSV;												///< GPGSV Satellite message (GPS)
 	CNMEASentenceGSA	m_GPGSA;												///< GPGSA GNSS DOP and active satellites
 	CNMEASentenceRMC	m_GPRMC;												///< GPRMC Recommended minimum data for GPS
 
+	// Galileo
 	CNMEASentenceGGA	m_GAGGA;												///< GAGGA Specific sentence data
+	CNMEASentenceGSV	m_GAGSV;												///< GAGSV Satellite message (GPS)
 	CNMEASentenceGSA	m_GAGSA;												///< GAGSA GNSS DOP and active satellites
 	CNMEASentenceRMC	m_GARMC;												///< GARMC Recommended minimum data for GPS
 
+	// GNSS
 	CNMEASentenceGGA	m_GNGGA;												///< GAGGA Specific sentence data
 	CNMEASentenceGSA	m_GNGSA;												///< GNGSA GNSS DOP and active satellites (usually GPS and GLONASS but can be GLONASS only)
 	CNMEASentenceRMC	m_GNRMC;												///< GNRMC Recommended minimum data for GPS
 
+	// GLONASS
 	CNMEASentenceGSV	m_GLGSV;												///< GLGSV Satellite message (GLONASS)
     CNMEASentenceGSA	m_GLGSA;												///< GLGSA GNSS DOP and active satellites
 
+	// GeiDou
 	CNMEASentenceGSV	m_QZGSV;												///< QZGSV Satellite message (BeiDou)
 	CNMEASentenceGSA	m_QZGSA;												///< QZGSA GNSS DOP and active satellites
 
+	// QZSS
 	CNMEASentenceGSV	m_BDGSV;												///< BDGSV Satellite message (QZSS)
 	CNMEASentenceGSA	m_BDGSA;												///< BDGSA GNSS DOP and active satellites
 
@@ -171,6 +178,13 @@ public:
 	/// \return Returns ERROR_OK if successful.
 	///
 	CNMEAParserData::ERROR_E GetGAGGA(CNMEAParserData::GGA_DATA_T & sentenseData);
+
+	///
+	/// \brief Places a copy of the GAGSV data into sentenseData
+	/// \param sentenseData reference to a CNMEASentenceGSV object to place the data into.
+	/// \return Returns ERROR_OK if successful.
+	///
+	CNMEAParserData::ERROR_E GetGAGSV(CNMEAParserData::GSV_DATA_T & sentenseData);
 
 	///
 	/// \brief Places a copy of the GAGSA data into sentenseData
