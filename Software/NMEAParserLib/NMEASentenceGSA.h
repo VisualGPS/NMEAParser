@@ -66,8 +66,13 @@ public:
 	CNMEAParserData::GSA_DATA_T GetSentenceData(void) {	return m_SentenceData; 	}
 
 	///
-	/// \brief Sets the GGA receive count member variable
-	/// \param uCount Count value to set to
-	void SetGGARxCount(unsigned int uCount) { m_SentenceData.uGGACount = uCount; m_nIndexCount = 0;	}
+	/// \brief This method is called from the same constellation GGA processing to let 
+	/// the GGA data know we have received a GGA message. 
+	///
+	/// This is a NMEA hack! Because the NMEA standard specifies that only 12 satellites 
+	/// can be specified in this message. If the receiver has more than 12, it [usually] 
+	/// sends another GSA sentence right after this one. We use the GGA to reset the count.
+	/// 
+	void FlagReceivedGGA() { m_nIndexCount = 0;	}
 };
 
