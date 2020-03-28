@@ -119,7 +119,7 @@ CNMEAParserData::ERROR_E CNMEASentenceRMC::ProcessSentence(char *pCmd, char *pDa
 		// 23 03 94       Date - 23rd of March 1994
 		m_SentenceData.m_nDay = (szField[0] - '0') * 10 + (szField[1] - '0');
 		m_SentenceData.m_nMonth = (szField[2] - '0') * 10 + (szField[3] - '0');
-		m_SentenceData.m_nYear = (szField[4] - '0') * 10 + (szField[4] - '0');
+        m_SentenceData.m_nYear = (szField[4] - '0') * 10 + (szField[5] - '0');
 		m_SentenceData.m_nYear += 2000;
 	}
 	else {
